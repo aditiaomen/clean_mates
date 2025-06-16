@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CLEAN MATES | Laundry & Perawatan Sepatu Premium</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+      :root {
+        --primary-blue: #2563eb;
+        --light-blue: #60a5fa;
+        --white: #ffffff;
+        --off-white: #f8fafc;
+        --dark-text: #1e293b;
+        --gray: #94a3b8;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background-color: var(--off-white);
+        color: var(--dark-text);
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      section {
+        padding: 80px 0;
+      }
+
+      /* Header */
+      header {
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        background-color: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0;
+      }
+
+      .logo {
+        font-size: 28px;
+        font-weight: 800;
+        color: var(--primary-blue);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .logo i {
+        font-size: 32px;
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+        align-items: center;
+        gap: 35px;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: var(--dark-text);
+        font-weight: 600;
+        transition: color 0.3s;
+        position: relative;
+      }
+
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -5px;
+        left: 0;
+        background-color: var(--primary-blue);
+        transition: width 0.3s;
+      }
+
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+
+      .mobile-menu {
+        display: none;
+        font-size: 24px;
+        cursor: pointer;
+      }
+
+      /* Hero Section */
+      .hero {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("https://images.unsplash.com/photo-1600269452121-4f2416e55c28?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80");
+        background-size: cover;
+        background-position: center;
+        color: var(--white);
+        text-align: center;
+        padding-top: 80px;
+      }
+
+      .hero-content {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+        margin-bottom: 20px;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        margin-bottom: 30px;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 12px 24px;
+        border-radius: 50px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s;
+      }
+
+      .btn-primary {
+        background-color: var(--primary-blue);
+        color: var(--white);
+        border: 2px solid var(--primary-blue);
+      }
+
+      .btn-primary:hover {
+        background-color: transparent;
+        color: var(--primary-blue);
+      }
+
+      /* About Section */
+      .about {
+        background-color: var(--white);
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 50px;
+        font-size: 2.5rem;
+        color: var(--primary-blue);
+      }
+
+      .about-content {
+        display: flex;
+        align-items: center;
+        gap: 50px;
+      }
+
+      .about-text {
+        flex: 1;
+      }
+
+      .about-image {
+        flex: 1;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .about-image img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      /* Services Section */
+      .services {
+        background-color: var(--off-white);
+      }
+
+      .service-category {
+        margin-bottom: 50px;
+      }
+
+      .service-category h3 {
+        font-size: 1.8rem;
+        color: var(--primary-blue);
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 3px solid var(--light-blue);
+        display: inline-block;
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin-bottom: 40px;
+      }
+
+      .service-card {
+        background-color: var(--white);
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s;
+      }
+
+      .service-card:hover {
+        transform: translateY(-10px);
+      }
+
+      .service-card h4 {
+        color: var(--primary-blue);
+        margin-bottom: 15px;
+        font-size: 1.3rem;
+      }
+
+      .price {
+        font-weight: bold;
+        color: var(--primary-blue);
+        margin: 15px 0;
+        font-size: 1.1rem;
+      }
+
+      /* Contact Section */
+      .contact {
+        background-color: var(--white);
+      }
+
+      .contact-form {
+        max-width: 600px;
+        margin: 0 auto;
+        background-color: var(--off-white);
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+      }
+
+      .form-group input,
+      .form-group textarea,
+      .form-group select {
+        width: 100%;
+        padding: 12px;
+        border: 2px solid var(--gray);
+        border-radius: 8px;
+        font-size: 16px;
+      }
+
+      .form-group textarea {
+        height: 150px;
+      }
+
+      /* WhatsApp Button */
+      .whatsapp-float {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background-color: #25d366;
+        color: white;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        text-align: center;
+        font-size: 30px;
+        box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+      }
+
+      /* Footer */
+      footer {
+        background-color: var(--dark-text);
+        color: var(--white);
+        padding: 30px 0;
+        text-align: center;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+
+        .mobile-menu {
+          display: block;
+        }
+
+        .about-content {
+          flex-direction: column;
+        }
+
+        .hero h1 {
+          font-size: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="container">
+        <nav>
+          <div class="logo">
+            <i class="fas fa-soap"></i>
+            <span>CLEAN MATES</span>
+          </div>
+          <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact" class="btn btn-primary">Consult Now</a></li>
+          </ul>
+          <div class="mobile-menu">
+            <i class="fas fa-bars"></i>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h1>Revive Your Favorite Kicks!</h1>
+          <p>Layanan premium laundry, reparasi, dan pengecatan sepatu untuk membuat sepatumu terlihat seperti baru lagi</p>
+          <a href="#services" class="btn btn-primary">Explore Services</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+      <div class="container">
+        <h2 class="section-title">About Us</h2>
+        <div class="about-content">
+          <div class="about-text">
+            <h3>CLEAN MATES</h3>
+            <p>Kami adalah spesialis perawatan sepatu premium yang berdedikasi untuk menghidupkan kembali sepatu favorit Anda. Dengan teknik terbaru dan bahan premium, kami memberikan hasil terbaik untuk koleksi sepatu Anda.</p>
+            <p>Tim ahli kami telah menangani berbagai merek sepatu ternama dan memahami karakteristik masing-masing material dengan baik.</p>
+          </div>
+          <div class="about-image">
+            <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Proses Cleaning Sepatu" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+      <div class="container">
+        <h2 class="section-title">Our Services</h2>
+
+        <!-- Wash Treatment -->
+        <div class="service-category">
+          <h3>Wash Treatment</h3>
+          <div class="services-grid">
+            <div class="service-card">
+              <h4>Fast Clean</h4>
+              <p>Pembersihan cepat untuk sepatu yang tidak terlalu kotor</p>
+              <div class="price">Start from Rp 25.000</div>
+              <ul>
+                <li>Basic cleaning</li>
+                <li>Quick turnaround</li>
+                <li>Perfect for routine care</li>
+              </ul>
+            </div>
+
+            <div class="service-card">
+              <h4>Deep Clean</h4>
+              <p>Pembersihan menyeluruh hingga ke bagian tersulit</p>
+              <div class="price">Start from Rp 35.000</div>
+              <ul>
+                <li>Deep stain removal</li>
+                <li>Material treatment</li>
+                <li>Complete restoration</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Repair -->
+        <div class="service-category">
+          <h3>Repair</h3>
+          <div class="services-grid">
+            <div class="service-card">
+              <h4>Reglue Easy</h4>
+              <p>Perbaikan lem dasar untuk masalah sederhana</p>
+              <div class="price">Start from Rp 20.000</div>
+              <ul>
+                <li>Minor sole separation</li>
+                <li>Basic adhesive</li>
+                <li>1 month warranty</li>
+              </ul>
+            </div>
+
+            <div class="service-card">
+              <h4>Reglue Medium</h4>
+              <p>Perbaikan tingkat menengah dengan material khusus</p>
+              <div class="price">Start from Rp 55.000</div>
+              <ul>
+                <li>Moderate sole issues</li>
+                <li>Premium adhesive</li>
+                <li>2 months warranty</li>
+              </ul>
+            </div>
+
+            <div class="service-card">
+              <h4>Reglue Hard</h4>
+              <p>Perbaikan kompleks dengan teknik khusus</p>
+              <div class="price">Start from Rp 120.000</div>
+              <ul>
+                <li>Severe damage repair</li>
+                <li>Specialized materials</li>
+                <li>3 months warranty</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Painting -->
+        <div class="service-category">
+          <h3>Painting</h3>
+          <div class="services-grid">
+            <div class="service-card">
+              <h4>Canvas Repaint</h4>
+              <p>Pengecatan ulang untuk material canvas</p>
+              <div class="price">Start from Rp 50.000</div>
+              <ul>
+                <li>Special canvas paint</li>
+                <li>Custom colors</li>
+                <li>Protective finish</li>
+              </ul>
+            </div>
+
+            <div class="service-card">
+              <h4>Suede Repaint</h4>
+              <p>Pengecatan ulang khusus untuk suede</p>
+              <div class="price">Start from Rp 100.000</div>
+              <ul>
+                <li>Suede-specific technique</li>
+                <li>Texture restoration</li>
+                <li>Post-paint care</li>
+              </ul>
+            </div>
+
+            <div class="service-card">
+              <h4>Leather Repaint</h4>
+              <p>Pengecatan ulang premium untuk kulit asli</p>
+              <div class="price">Start from Rp 80.000</div>
+              <ul>
+                <li>Premium leather paint</li>
+                <li>Leather conditioning</li>
+                <li>Like-new results</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Special Treatment -->
+        <div class="service-category">
+          <h3>Special Treatment</h3>
+          <div class="services-grid">
+            <div class="service-card">
+              <h4>Re-Unyellowing</h4>
+              <p>Menghilangkan efek menguning pada sol sepatu</p>
+              <div class="price">Start from Rp 60.000</div>
+              <ul>
+                <li>Oxidation removal</li>
+                <li>UV treatment</li>
+                <li>Preventive coating</li>
+              </ul>
+            </div>
+
+            <div class="service-card">
+              <h4>Re-Whitening</h4>
+              <p>Memutihkan kembali bagian yang sudah kusam</p>
+              <div class="price">Start from Rp 50.000</div>
+              <ul>
+                <li>Advanced whitening</li>
+                <li>Stain treatment</li>
+                <li>Brightening finish</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+      <div class="container">
+        <h2 class="section-title">Get in Touch</h2>
+        <div class="contact-form">
+          <form id="consultForm" onsubmit="sendToWhatsApp(event)">
+            <div class="form-group">
+              <label for="name">Full Name</label>
+              <input type="text" id="name" required />
+            </div>
+            <div class="form-group">
+              <label for="phone">WhatsApp Number</label>
+              <input type="tel" id="phone" required />
+            </div>
+            <div class="form-group">
+              <label for="service">Service Interested In</label>
+              <select id="service" required>
+                <option value="" disabled selected>Select a service</option>
+                <optgroup label="Wash Treatment">
+                  <option value="Fast Clean">Fast Clean</option>
+                  <option value="Deep Clean">Deep Clean</option>
+                </optgroup>
+                <optgroup label="Repair">
+                  <option value="Reglue Easy">Reglue Easy</option>
+                  <option value="Reglue Medium">Reglue Medium</option>
+                  <option value="Reglue Hard">Reglue Hard</option>
+                </optgroup>
+                <optgroup label="Painting">
+                  <option value="Canvas Repaint">Canvas Repaint</option>
+                  <option value="Suede Repaint">Suede Repaint</option>
+                  <option value="Leather Repaint">Leather Repaint</option>
+                </optgroup>
+                <optgroup label="Special Treatment">
+                  <option value="Re-Unyellowing">Re-Unyellowing</option>
+                  <option value="Re-Whitening">Re-Whitening</option>
+                </optgroup>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Shoe Details (Brand, Size, Color, Issues)</label>
+              <textarea id="message" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary"><i class="fab fa-whatsapp"></i> Send via WhatsApp</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/6285810866309?text=Hi%20CLEAN%20MATES!%20I%20want%20to%20consult%20about%20your%20shoe%20services" class="whatsapp-float" target="_blank">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <p>&copy; 2023 CLEAN MATES. All Rights Reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      // Mobile Menu Toggle
+      document.querySelector(".mobile-menu").addEventListener("click", function () {
+        document.querySelector(".nav-links").classList.toggle("active");
+      });
+
+      // WhatsApp Form Submission
+      function sendToWhatsApp(e) {
+        e.preventDefault();
+
+        const name = document.getElementById("name").value;
+        const phone = document.getElementById("phone").value;
+        const service = document.getElementById("service").value;
+        const message = document.getElementById("message").value;
+
+        const whatsappMessage = `*CLEAN MATES SERVICE REQUEST*%0A%0A` + `Name: ${name}%0A` + `Phone: ${phone}%0A` + `Service: ${service}%0A%0A` + `Shoe Details:%0A${message}%0A%0A` + `_I'd like to consult about this service_`;
+
+        // Replace with CLEAN MATES WhatsApp number
+        const whatsappNumber = "6285810866309";
+
+        window.open(`https://wa.me/${6285810866309}?text=${whatsappMessage}`, "_blank");
+
+        // Reset form
+        document.getElementById("consultForm").reset();
+      }
+    </script>
+  </body>
+</html>
